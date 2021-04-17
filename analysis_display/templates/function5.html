@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>兴趣点推荐</title>
+      <link rel="stylesheet" href="../static/assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../static/assets/css/index-style.css" type="text/css">
+
+      <link rel="stylesheet" href="../static/assets/css/preview.css" type="text/css" />
+    <script type="text/javascript" src="../static/assets/js/echarts.min.js"></script>
+      <script type="text/javascript" src="../static/assets/js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="../static/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/assets/js/index.js"></script>
+    <script type="text/javascript" src="../static/assets/js/rem.js"></script>
+{#      <script type="text/javascript">#}
+{#        $(function () {#}
+{##}
+{#            function ones() {#}
+{##}
+{#                // 请求获取数据#}
+{#                $.ajax({#}
+{#                    url: 'localhost:8000/upload_f',#}
+{#                    type: "GET",#}
+{#                    dataType: "json",#}
+{#                    data: result,#}
+{#                    success: function (result) { //成功操作#}
+{#                        res = result;#}
+{#                        console.log(res);#}
+{#                        var tab = $("#table1")[0];#}
+{#                        tab = tab.childNodes[1]; //tbody标签#}
+{##}
+{#                     //   console.log(tab)#}
+{#                        for (var i = 0; i < res.length; i++) {#}
+{#                            //循环添加#}
+{#                            if (i < res.length) { //前面接收数据#}
+{#                                var tr = $("<tr>"); //创建tr标签#}
+{#                                var td1 = $("<td>"); //创建td标签#}
+{#                                td1.text(res[i].sentence);#}
+{#                                var td2 = $("<td>"); //创建td标签#}
+{#                                td2.text(res[i].result);#}
+{#                                tr.append(td1);#}
+{#                                tr.append(td2);#}
+{#                                tab.append(tr[0]);#}
+{#                            }#}
+{#                        }#}
+{#                    },#}
+{#                    error: function () {#}
+{#                        console.log("请求失败！！")#}
+{#                    }#}
+{##}
+{#                });#}
+{##}
+{#            };#}
+{#            ones();#}
+{##}
+{#        })#}
+{#    </script>#}
+  </head>
+  <body background="../static/assets/images/videos/bk.jpeg"  style="background-repeat:no-repeat; background-size:100%;">
+
+
+<div class="first-preview" style="overflow-x:scroll;">
+    <form method="post" action="/update_t" enctype="multipart/form-data">
+        <table id="table" >
+            <tr>
+                <td style="height: 7vh">Fields</td>
+                <td style="height: 7vh">Raw_Fields</td>
+                <td style="height: 7vh">Update_Fields</td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Latitude</td>
+                <td style="height: 7vh">{{ result_dict.Latitude }}</td>
+                <td style="height: 7vh"><input type="text" name="Latitude"/></td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Longitude</td>
+                <td style="height: 7vh">{{ result_dict.Longitude }}</td>
+                <td style="height: 7vh"><input type="text" name="Longitude"/></td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Unique Squirrel ID</td>
+                <td style="height: 7vh">{{ result_dict.Unique_Squirrel_ID }}</td>
+                <td style="height: 7vh"><input type="text" name="Unique Squirrel ID"/></td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Shift</td>
+                <td style="height: 7vh">{{ result_dict.Shift }}</td>
+                <td style="height: 7vh"><input type="text" name="Shift"/></td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Date</td>
+                <td style="height: 7vh">{{ result_dict.Date }}</td>
+                <td style="height: 7vh"><input type="text" name="Date"/></td>
+            </tr>
+            <tr>
+                <td style="height: 7vh">Age</td>
+                <td style="height: 7vh">{{ result_dict.Age }}</td>
+                <td style="height: 7vh"><input type="text" name="Age"/></td>
+            </tr>
+           <input type="submit" value="update" id="update">
+
+
+
+        </table>
+    </form>
+
+    </div>
+
+
+  </body>
+
+</html>

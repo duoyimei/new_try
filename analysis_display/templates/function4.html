@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>用户位置预测</title>
+      <link rel="stylesheet" href="../static/assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../static/assets/css/index-style.css" type="text/css">
+
+      <link rel="stylesheet" href="../static/assets/css/preview.css" type="text/css" />
+    <script type="text/javascript" src="../static/assets/js/echarts.min.js"></script>
+      <script type="text/javascript" src="../static/assets/js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="../static/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/assets/js/index.js"></script>
+    <script type="text/javascript" src="../static/assets/js/rem.js"></script>
+{#      <script type="text/javascript">#}
+{#        $(function () {#}
+{##}
+{#            function ones() {#}
+{##}
+{#                // 请求获取数据#}
+{#                $.ajax({#}
+{#                    url: 'localhost:8000/upload_f',#}
+{#                    type: "GET",#}
+{#                    dataType: "json",#}
+{#                    data: result,#}
+{#                    success: function (result) { //成功操作#}
+{#                        res = result;#}
+{#                        console.log(res);#}
+{#                        var tab = $("#table1")[0];#}
+{#                        tab = tab.childNodes[1]; //tbody标签#}
+{##}
+{#                     //   console.log(tab)#}
+{#                        for (var i = 0; i < res.length; i++) {#}
+{#                            //循环添加#}
+{#                            if (i < res.length) { //前面接收数据#}
+{#                                var tr = $("<tr>"); //创建tr标签#}
+{#                                var td1 = $("<td>"); //创建td标签#}
+{#                                td1.text(res[i].sentence);#}
+{#                                var td2 = $("<td>"); //创建td标签#}
+{#                                td2.text(res[i].result);#}
+{#                                tr.append(td1);#}
+{#                                tr.append(td2);#}
+{#                                tab.append(tr[0]);#}
+{#                            }#}
+{#                        }#}
+{#                    },#}
+{#                    error: function () {#}
+{#                        console.log("请求失败！！")#}
+{#                    }#}
+{##}
+{#                });#}
+{##}
+{#            };#}
+{#            ones();#}
+{##}
+{#        })#}
+{#    </script>#}
+  </head>
+  <body background="../static/assets/images/videos/bk.jpeg" style="background-repeat:no-repeat; background-size:100%;">
+
+      <nav class="navbar fixed-top navbar-expand-sm navbartransparent" style="background-color: #8f98a8">
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main_index' %}" style="color: white">Index<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'map' %}" style="color: white">Display on OpenStreets map<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings' %}" style="color: white">Lists all squirrel sightings<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_add' %}" style="color: white">Create a new sighting<span class="sr-only"></span></a>
+            </li>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_stats' %}" style="color: black; font-weight: bold">General stats about the sightings<span class="sr-only"></span></a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+      <div class="picture0" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Hectare Squirrel Number</font>
+                <img src={{ img_url0 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+
+      <div class="picture1" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Age</font>
+                <img src={{ img_url1 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+
+        <div class="picture2" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Eating</font>
+                <img src={{ img_url2 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+        <div class="picture3" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Location</font>
+                <img src={{ img_url3 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+        <div class="picture4" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Running</font>
+                <img src={{ img_url4 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+        <div class="picture5" style="overflow-x:scroll;">
+{#       {{ result_all_list }}#}
+        <table id="table">
+            <tr>
+                <font size="3px" color="black" style="font-weight: bold;">Chasing</font>
+                <img src={{ img_url5 }}/>
+{#            <img src="../static/assets/images/videos/raw_cloud.png" >#}
+            </tr>
+
+        </table>
+    </div>
+
+
+
+  </body>
+
+</html>

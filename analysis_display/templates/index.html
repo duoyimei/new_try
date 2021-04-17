@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../static/assets/css/index-style.css" type="text/css">
+
+      <link rel="stylesheet" href="../static/assets/css/preview.css" type="text/css" />
+    <script type="text/javascript" src="../static/assets/js/echarts.min.js"></script>
+      <script type="text/javascript" src="../static/assets/js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="../static/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/assets/js/index.js"></script>
+    <script type="text/javascript" src="../static/assets/js/rem.js"></script>
+    <title>map</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-sm navbartransparent" style="background-color: #8f98a8">
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="" style="color: black;font-weight: bold">Index<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'map' %}">Display on OpenStreets map<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings' %}">Lists all squirrel sightings<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_add' %}">Create a new sighting<span class="sr-only"></span></a>
+            </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_stats' %}">General stats about the sightings<span class="sr-only"></span></a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class='input_1' style="margin-left:330px; z-index:2" >
+				<form method="post" action="/upload_f0" enctype="multipart/form-data" >
+
+					<input type="hidden" name="uname" value={{uname}} >
+                    <font size="3px" color="black" >upload file：</font>
+                    <input type="file" name="myfile"  id='input1'>
+					<input type="submit" value="Upload CSV File" id='input2'>
+				</form>
+			</div>
+    <div class='download' style="margin-left:330px; z-index:2" >
+				<form method="post" action="/download_f" enctype="multipart/form-data" >
+
+{#					<input type="hidden" name="uname" value={{uname}} >#}
+{#                    <font size="3px" color="black" >下载文件：</font>#}
+{#                    <input type="file" name="myfile"  id='input1'>#}
+					<input type="submit" value="Download CSV File" id='input2'>
+				</form>
+			</div>
+
+    <div id="back-ground" style="background-image: url(../static/assets/images/videos/background7.jpg);background-size:100% 100%;z-index:1;">
+<!--        <li style="background-image: url(../static/assets/images/videos/timg.png);background-size:100% 100%;">-->
+<!--        <video muted id="vedio" src='../static/assets/images/videos/timg.png' preload="none" loop="loop" autoplay="autoplay">-->
+<!--            浏览器不支持 video 标签。-->
+<!--        </video>-->
+<!--        <div id="map-wrap" class="container-fluid"></div>-->
+    </div>
+    
+
+</body>
+</html>

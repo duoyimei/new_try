@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+      <link rel="stylesheet" href="../static/assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../static/assets/css/index-style.css" type="text/css">
+
+      <link rel="stylesheet" href="../static/assets/css/preview.css" type="text/css" />
+    <script type="text/javascript" src="../static/assets/js/echarts.min.js"></script>
+      <script type="text/javascript" src="../static/assets/js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="../static/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/assets/js/index.js"></script>
+    <script type="text/javascript" src="../static/assets/js/rem.js"></script>
+{#      <script type="text/javascript">#}
+{#        $(function () {#}
+{##}
+{#            function ones() {#}
+{##}
+{#                // 请求获取数据#}
+{#                $.ajax({#}
+{#                    url: 'localhost:8000/upload_f',#}
+{#                    type: "GET",#}
+{#                    dataType: "json",#}
+{#                    data: result,#}
+{#                    success: function (result) { //成功操作#}
+{#                        res = result;#}
+{#                        console.log(res);#}
+{#                        var tab = $("#table1")[0];#}
+{#                        tab = tab.childNodes[1]; //tbody标签#}
+{##}
+{#                     //   console.log(tab)#}
+{#                        for (var i = 0; i < res.length; i++) {#}
+{#                            //循环添加#}
+{#                            if (i < res.length) { //前面接收数据#}
+{#                                var tr = $("<tr>"); //创建tr标签#}
+{#                                var td1 = $("<td>"); //创建td标签#}
+{#                                td1.text(res[i].sentence);#}
+{#                                var td2 = $("<td>"); //创建td标签#}
+{#                                td2.text(res[i].result);#}
+{#                                tr.append(td1);#}
+{#                                tr.append(td2);#}
+{#                                tab.append(tr[0]);#}
+{#                            }#}
+{#                        }#}
+{#                    },#}
+{#                    error: function () {#}
+{#                        console.log("请求失败！！")#}
+{#                    }#}
+{##}
+{#                });#}
+{##}
+{#            };#}
+{#            ones();#}
+{##}
+{#        })#}
+{#    </script>#}
+  </head>
+  <body background="../static/assets/images/videos/bk.jpeg" style="background-repeat:no-repeat; background-size:100%;z-index:1">
+
+        <nav class="navbar fixed-top navbar-expand-sm navbartransparent" style="background-color: #8f98a8">
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main_index' %}" style="color: white">Index<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'map' %}" style="color: white">Display on OpenStreets map<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings' %}" style="color: black; font-weight: bold">Lists all squirrel sightings<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_add' %}" style="color: white">Create a new sighting<span class="sr-only"></span></a>
+            </li>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'sightings_stats' %}" style="color: white">General stats about the sightings<span class="sr-only"></span></a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="squirrels_result" style="overflow-x:scroll;top: 15%; z-index:2">
+      <table id="table1">
+      <a href="{% url 'sightings_add' %}" style="color: white">Create a new sighting<span class="sr-only"></span></a>
+        <tr>
+            <td style="height: 7vh; font-weight: bold">Unique Squirrel ID</td>
+            <td style="height: 7vh; font-weight: bold">Date</td>
+            <td style="height: 7vh; font-weight: bold">Link to unique squirrel sighting</td>
+        </tr>
+          {% for sighting in sightings %}
+           <tr>
+            <td style="height: 7vh">{{ sighting.Unique_Squirrel_ID }}</td>
+            <td style="height: 7vh">{{ sighting.Date }}</td>
+           <td style="height: 7vh"><a href="/sightings/{{ sighting.Unique_Squirrel_ID }}">链接</a></td>
+
+        </tr>
+        {% endfor %}
+
+
+        </table>
+    </div>
+
+  </body>
+
+</html>
